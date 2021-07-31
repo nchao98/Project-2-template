@@ -1,0 +1,30 @@
+{
+  "name": "sharespace",
+  "version": "1.0.0",
+  "description": "An application where Users can share their favorite things amongst each other as well as be given popular suggestions based popular categories",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nchao98/ShareSpace.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nchao98/ShareSpace/issues"
+  },
+  "homepage": "https://github.com/nchao98/ShareSpace#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.5"
+  }
+}
