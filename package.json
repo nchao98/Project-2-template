@@ -28,7 +28,8 @@
     "handlebars": "^4.7.7",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.12",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "startbootstrap-sb-admin": "^7.0.2"
   },
   "devDependencies": {
     "autoprefixer": "10.2.6",
