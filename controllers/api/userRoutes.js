@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { route } = require('.');
 const { User } = require('../../models');
 
 //login route
@@ -54,6 +53,15 @@ router.post('/create', async (req, res) => {
         res.status(200).json({ message: 'User account created successfully. Please login.'});
     } catch (err) {
         res.status(400).json({ error: err })
+    };
+});
+
+//logout user
+router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
     };
 });
 
