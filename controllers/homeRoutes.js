@@ -26,7 +26,33 @@ router.get('/login', async(req,res) => {
     } catch (err) {
         res.status(400).json(err);
     }
+})
 
+//register route - return register page
+router.get('/register', async(req,res) => {
+    try {
+        res.render('register');
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
+
+//recover password route - return password page
+router.get('/password',async(req,res) => {
+    try {
+        res.render('password');
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
+
+//logout route - return logout page
+router.get('/logout', async(req,res) => {
+    try {
+        res.render('logout');
+    } catch (err) {
+        res.status(400).json(err);
+    }
 })
 
 module.exports = router;

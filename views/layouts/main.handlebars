@@ -120,14 +120,20 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        {{{username}}}
+                        <!--conditionaly render-->
+                        {{#if logged_in}}
+                            {{username}}
+                        {{else}}
+                            Not logged in
+                        {{/if}}
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
             <!-- side-layout end   -->
 
-            {{{body}}}
+            <!--Render view-->
+            {{{ body }}}
 
 
               <footer class="py-4 bg-light mt-auto">
@@ -151,7 +157,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
       <script src="/js/datatables-simple-demo.js"></script>
-      <script src="/scripts"></script>
+      {{!-- <script src="/scripts"></script> --}}
 
 
   </body>
