@@ -55,4 +55,33 @@ router.get('/logout', async(req,res) => {
     }
 })
 
+
+//render 401
+router.get('/401', async(req,res) => {
+    try {
+        res.render('401');
+    } catch (err) {
+        res.render('500');
+    }
+})
+
+//render 404
+router.get('/404', async(req,res) => {
+    try {
+        res.render('404');
+    } catch (err) {
+        res.render('500');
+    }
+})
+
+//render 500
+router.get('/500', async(req,res) => {
+    try {
+        res.render('500');
+    } catch (err) {
+        res.status(500).json(err);;
+    }
+})
+
+
 module.exports = router;
