@@ -15,7 +15,7 @@ Idea.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    linkname: {
+    link_name: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -28,6 +28,13 @@ Idea.init(
       references: {
         model: 'category',
         key: 'id',
+      },
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      reference: {
+        model: 'category',
+        key: 'id'
       },
     },
   },
