@@ -1,6 +1,7 @@
 const User = require('./User');
 const Category = require('./Category');
 const Idea = require('./Idea');
+const UserCategory = require('./UserCategory');
 
 //User to Category associations
 User.belongsToMany(Category, {
@@ -35,4 +36,4 @@ User.hasMany(Idea, {
 });
 
 
-module.exports = { User, Category, Idea };
+module.exports = { User, Category, Idea, UserCategory };

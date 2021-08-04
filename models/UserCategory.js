@@ -2,11 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 const User = require('./User');
-const Tag = require('./Tag');
+const Category = require('./Category');
+class UserCategory extends Model {}
 
-class UserTag extends Model {}
-
-UserTag.init(
+UserCategory.init(
   {
     // define columns
     id: {
@@ -23,11 +22,11 @@ UserTag.init(
         key: 'id',
       }
     },
-    tag_id: {
+    category_id: {
       type: DataTypes.INTEGER,
-      //references the TAG model's id
+      //references the CATEGORY model's id
       references: {
-        model: Tag,
+        model: Category,
         key: 'id',
       }
     }
@@ -37,8 +36,8 @@ UserTag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'product_tag',
+    modelName: 'user_category',
   }
 );
 
-module.exports = UserTag;
+module.exports = UserCategory;
