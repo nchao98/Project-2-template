@@ -15,7 +15,7 @@ Idea.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    linkname: {
+    link_name: {
       type: DataTypes.STRING,
       allowNull: true,
     },

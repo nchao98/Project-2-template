@@ -11763,3 +11763,11 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.category-select {
+  -webkit-appearance: menulist-button;
+  height: 3.6rem;
+  width: 19rem;
+  border-radius: 3px;
+  border-color: #adb5bda3;
+}
