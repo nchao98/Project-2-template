@@ -27,7 +27,7 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({});  //insert helpers inside {} once the utils/helpers is created
+const hbs = exphbs.create();  //insert helpers inside {} once the utils/helpers is created
 
 //inform express of the template engine being used
 app.engine('handlebars', hbs.engine);

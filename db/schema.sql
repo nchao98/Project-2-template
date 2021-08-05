@@ -2,5 +2,4 @@
 DROP DATABASE IF EXISTS shareSpace_db;
 -- create db
 CREATE DATABASE shareSpace_db;
--- use db
-USE shareSpace_db;
+
