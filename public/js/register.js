@@ -1,4 +1,4 @@
-const regusterForm = async (event) => {
+const registerForm = async (event) => {
     event.preventDefault();
 
 
@@ -14,6 +14,16 @@ if (firstName && lastName && email && password && passwordConfirm) {
         body: JSON.stringify({firstName, lastName, email, password, passwordConfirm}),
         headers: { 'Content-Type': 'application/json' },
     });
+
+    check_pass();
+
+    function check_pass() {
+        if (password == passwordConfirm) {
+            document.getElementById('createAcct').disabled = false;
+        } else {
+            document.getElementById('createAcct').disabled = true;
+        }
+    }
 
     if (response.ok) {
         document.location.replace('/profile');
