@@ -33,7 +33,7 @@ Idea.init(
     user_id: {
       type: DataTypes.INTEGER,
       reference: {
-        model: 'category',
+        model: 'user',
         key: 'id'
       },
     },
