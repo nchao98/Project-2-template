@@ -4,12 +4,12 @@ const Idea = require('./Idea');
 
 //User to Category associations
 User.belongsToMany(Category, {
-  through: 'idea',
+  through: 'Idea',
   foreignKey: 'user_id'
 });
 
 Category.belongsToMany(User, {
-  through: 'idea',
+  through: 'Idea',
   foreignKey: 'category_id'
 });
 
