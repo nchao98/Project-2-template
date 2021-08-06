@@ -8,10 +8,12 @@ const ideaData = require('./ideaData.json');
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
+
     await User.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
     });
+
 
     await Category.bulkCreate(categoryData);
     await Idea.bulkCreate(ideaData);
