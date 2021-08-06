@@ -45,12 +45,12 @@ router.post('/create', async (req, res) => {
             return;
         }
         //otherwise create new user
-        const newUser = await User.create({
+        await User.create({
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
         })
-        res.status(200).json({ message: 'User account created successfully. Please login.'});
+         res.status(200).json({ message: 'User account created successfully. Please login.'});
     } catch (err) {
         res.status(400).json({ error: err })
     };
