@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 })
 
 //login route - return login page
-router.get('/login', async(req,res) => {
+router.get('/login', async(req, res) => {
     try {
         res.render('login');
     } catch (err) {
@@ -29,7 +29,7 @@ router.get('/login', async(req,res) => {
 })
 
 //register route - return register page
-router.get('/register', async(req,res) => {
+router.get('/register', async(req, res) => {
     try {
         res.render('register');
     } catch (err) {
@@ -38,7 +38,7 @@ router.get('/register', async(req,res) => {
 })
 
 //recover password route - return password page
-router.get('/password',async(req,res) => {
+router.get('/password',async(req, res) => {
     try {
         res.render('password');
     } catch (err) {
@@ -47,7 +47,7 @@ router.get('/password',async(req,res) => {
 })
 
 //logout route - return logout page
-router.get('/logout', async(req,res) => {
+router.get('/logout', async(req, res) => {
     try {
         res.render('logout');
     } catch (err) {
@@ -55,9 +55,17 @@ router.get('/logout', async(req,res) => {
     }
 })
 
+//create Idea route
+router.get('/createIdea', async(req, res) => {
+    try {
+        res.render('createIdea');
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
 
 //render 401
-router.get('/401', async(req,res) => {
+router.get('/401', async(req, res) => {
     try {
         res.render('401');
     } catch (err) {
@@ -66,7 +74,7 @@ router.get('/401', async(req,res) => {
 })
 
 //render 404
-router.get('/404', async(req,res) => {
+router.get('/404', async(req, res) => {
     try {
         res.render('404');
     } catch (err) {
@@ -75,7 +83,7 @@ router.get('/404', async(req,res) => {
 })
 
 //render 500
-router.get('/500', async(req,res) => {
+router.get('/500', async(req, res) => {
     try {
         res.render('500');
     } catch (err) {
