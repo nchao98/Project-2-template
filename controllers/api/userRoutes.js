@@ -56,6 +56,32 @@ router.post('/create', async (req, res) => {
     };
 });
 
+//creat idea route
+router.post('/createIdea', async (req, res) => {
+    try {
+        //check if user exists in DB
+        const ideaData = await Idea.findOne({
+            where: { idea_name: req.body.idea_name }
+        });
+
+        //if found, return error
+        if (ideaData) {
+            res.status(400).json({ message: 'Idea already exists.  Please try another'})
+            return;
+        }
+        //otherwise create new user
+        await Idea.create({
+            idea_name: req.body.idea_name,
+            link_name: req.body.link_name,
+            description: req.body.description,
+            category_id: req.body.category_id,
+        })
+         res.status(200).json({ message: 'Idea created'});
+    } catch (err) {
+        res.status(400).json({ error: err })
+    };
+});
+
 //logout user
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
