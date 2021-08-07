@@ -4,15 +4,16 @@ const ideaForm = async (event) => {
 
 // //Gets the values from the login form found in the login handlebars
 const inputtedIdea = document.querySelector('#inputIdea').value.trim();
-const categoryChoice = document.querySelector('#chooseCategory').value.trim();
+const categoryChoice = parseInt(document.querySelector('#chooseCategory').value.trim());
 const linkName = document.querySelector('#inputLink').value.trim();
 const description = document.querySelector('#inputDescription').value.trim();
 
-if (inputtedIdea && categoryChoice && linkName && description) {
-    console.log(inputtedIdea, categoryChoice,linkName, description);
+
+if (inputtedIdea && linkName && description && categoryChoice) {
+    console.log(inputtedIdea,linkName, description, categoryChoice);
         const response = await fetch('/api/users/createIdea', {
             method: 'POST',
-            body: JSON.stringify({inputtedIdea, linkName, categoryChoice, description}),
+            body: JSON.stringify({inputtedIdea, linkName, description, categoryChoice}),
             headers: { 'Content-Type': 'application/json' },
         });
         
