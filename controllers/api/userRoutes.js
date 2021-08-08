@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const schema = require('../../utils/validation.js');
 const { User, Idea } = require('../../models');
 
 //login route
@@ -36,6 +37,20 @@ router.post('/login', async (req, res) => {
 //create user route
 router.post('/create', async (req, res) => {
     try {
+        //validate information being provided using Joi
+        const result = await schema.validateAsync({ 
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+        },
+        { abortEarly:false 
+        }
+        )
+        //if there is an error in the submitted data, return error message
+        if (result.error) {
+            res.status(400).send(result.error.details)
+        }
+        
         //check if user exists in DB
         const userData = await User.findOne({
             where: { username: req.body.username }
