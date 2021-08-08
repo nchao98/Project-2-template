@@ -37,6 +37,31 @@ router.get('/register', async(req, res) => {
     }
 })
 
+//routes to view categories
+router.get('/categories/:id', async(req, res) => {
+    try{
+        const categoryData = await Category.findByPk(req.params.id, {
+            include: [
+              {
+                model: Idea,
+                
+                
+              },
+              {
+                  model: User
+              }
+            ],
+          });
+          const categories = categoryData.get({ plain: true });
+          console.log(categories);
+          res.render('categories', {categories, logged_in: req.session.logged_in, username: req.session.username});
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+
+})
+
 //recover password route - return password page
 router.get('/password',async(req, res) => {
     try {
