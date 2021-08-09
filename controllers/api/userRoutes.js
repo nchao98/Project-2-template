@@ -35,14 +35,14 @@ router.post('/login', async (req, res) => {
 
 //create user route
 router.post('/create', async (req, res) => {
-    try {
+    try {    
         //check if user exists in DB
         const userData = await User.findOne({
             where: { username: req.body.username }
         });
-        //if found, return error
+        //if found, return error 409 - conflict
         if (userData) {
-            res.status(400).json({ message: 'Username already exists.  Please try logging in or select a new username.'})
+            res.status(409).json({ message: 'Username already exists.  Please try logging in or select a new username.'})
             return;
         }
         //otherwise create new user

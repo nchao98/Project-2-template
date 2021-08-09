@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
         res.render('homepage', {
             ideas, 
             logged_in: req.session.logged_in,
+            username: req.session.username
         });
     } catch (err) {
         res.status(500).json(err);
@@ -22,7 +23,10 @@ router.get('/', async (req, res) => {
 //login route - return login page
 router.get('/login', async(req, res) => {
     try {
-        res.render('login');
+        res.render('login', {
+            logged_in: req.session.logged_in,
+            username: req.session.username
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -31,7 +35,10 @@ router.get('/login', async(req, res) => {
 //register route - return register page
 router.get('/register', async(req, res) => {
     try {
-        res.render('register');
+        res.render('register', {
+            logged_in: req.session.logged_in,
+            username: req.session.username
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -43,18 +50,17 @@ router.get('/categories/:id', async(req, res) => {
         const categoryData = await Category.findByPk(req.params.id, {
             include: [
               {
-                model: Idea,
-                
-                
+                model: User
               },
-              {
-                  model: User
-              }
             ],
           });
           const categories = categoryData.get({ plain: true });
           console.log(categories);
-          res.render('categories', {categories, logged_in: req.session.logged_in, username: req.session.username});
+          res.render('categories', {
+            categories, 
+            logged_in: req.session.logged_in, 
+            username: req.session.username
+        });
 
     } catch (err) {
         res.status(400).json(err);
@@ -65,7 +71,10 @@ router.get('/categories/:id', async(req, res) => {
 //recover password route - return password page
 router.get('/password',async(req, res) => {
     try {
-        res.render('password');
+        res.render('password', {
+            logged_in: req.session.logged_in,
+            username: req.session.username
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -74,7 +83,10 @@ router.get('/password',async(req, res) => {
 //logout route - return logout page
 router.get('/logout', async(req, res) => {
     try {
-        res.render('logout');
+        res.render('logout', {
+            logged_in: req.session.logged_in,
+            username: req.session.username
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -83,7 +95,10 @@ router.get('/logout', async(req, res) => {
 //create Idea route
 router.get('/createIdea', async(req, res) => {
     try {
-        res.render('createIdea');
+        res.render('createIdea', {
+            logged_in: req.session.logged_in,
+            username: req.session.username
+        });
     } catch (err) {
         res.status(400).json(err);
     }
