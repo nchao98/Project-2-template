@@ -4,7 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-//const helpers = require('./utils/helpers');
+const helpers = require('./utils/helpers');
 
 //set up sequelize 
 const sequelize = require('./config/connection');
@@ -27,7 +27,7 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create();  //insert helpers inside {} once the utils/helpers is created
+const hbs = exphbs.create({helpers});  //insert helpers inside {} once the utils/helpers is created
 
 //inform express of the template engine being used
 app.engine('handlebars', hbs.engine);
