@@ -2,31 +2,72 @@
             <!-- main start  -->
             <main>
                 <div class="container-fluid px-4">
-                  <h1 class="mt-4" style="text-align: center;">{{{category_name}}}</h1>               
-                  <h2 class="mt-4" style="text-align: center;">{{{idea_name}}}</h2>
+                  <h1 class="mt-4" style="text-align: center;">{{categories.category_name}}</h1>               
+                  {{!-- <h2 class="mt-4" style="text-align: center;">{{{idea_name}}}</h2> --}}
                   
             <!-- carousel start  -->
-            {{!-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                {{#each categories.users as | user |}}
+                  {{!-- {{#if  }} --}}
+                    {{!-- {{#each users.Idea as | idea |}} --}}
+                      {{#if @first}}
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{@index}}" class="active" aria-current="true" aria-label="Slide {{@index}}"></button>
+                    {{else}}
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{@index}}" aria-label="Slide {{index}}"></button>
+                      {{/if}}
+                    {{/each}}
+                  {{!-- {{/if}} --}}
+                {{!-- {{/with}} --}}
               </div>
               
               <div class="carousel-inner">
+                {{#each categories.users as | user |}}
+                  {{#if @first }}
+                    {{#if (link_jpg user.Idea.link_name)}}
                 <div class="carousel-item active" 
-                style="background-image: url('{{{link_name[0]}}}')">
+                style="background-image: url('{{user.Idea.link_name}}')">
                 </div>
-                <div class="carousel-item">
+                    {{/if}}
+                    {{#if (link_youtube user.Idea.link_name)}}
+                <div class="carousel-item active">
                   <iframe 
-                  src="{{{link_name[1]}}}" width="100%" height="100%">
+                  src="{{user.Idea.link_name}}" width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                   </iframe>
                 </div>
-                <div class="carousel-item">                 
+                    {{/if}}
+                    {{#if (link_giphy user.Idea.link_name)}}
+                <div class="carousel-item active">                 
                   <iframe 
-                  src="{{{link_name[2]}}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
+                  src="{{user.Idea.link_name}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
                   </iframe>                 
                 </div>
+                    {{/if}}
+
+                  {{else}}
+
+                    {{#if (link_jpg user.Idea.link_name)}}
+                <div class="carousel-item" 
+                style="background-image: url('{{user.Idea.link_name}}')">
+                </div>
+                    {{/if}}
+                    {{#if (link_youtube user.Idea.link_name)}}
+                <div class="carousel-item">
+                  <iframe 
+                  src="{{user.Idea.link_name}}" width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                  </iframe>
+                </div>
+                    {{/if}}
+                    {{#if (link_giphy user.Idea.link_name)}}
+                <div class="carousel-item">                 
+                  <iframe 
+                  src="{{user.Idea.link_name}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
+                  </iframe>                 
+                </div>
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
               </div>
 
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -38,11 +79,11 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
-            </div> --}}
+            </div>
             <!-- carousel end   -->
 
             <!-- description start -->
-            <div class="card mb-4">
+            {{!-- <div class="card mb-4">
               <div class="card-header">
                   <i class="fas fa-book-open me-1"></i>
                   Description
@@ -50,7 +91,7 @@
               <div class="card-body" style="text-align: center;"> 
                   {{categories.description}}
               </div>
-            </div>
+            </div> --}}
             <!-- description end -->
             
             <!-- table start -->
