@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const schema = require('../../utils/validation.js');
 const { User, Idea } = require('../../models');
 
 //login route
@@ -36,28 +35,14 @@ router.post('/login', async (req, res) => {
 
 //create user route
 router.post('/create', async (req, res) => {
-    try {
-        //validate information being provided using Joi
-        const result = await schema.validateAsync({ 
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
-        },
-        { abortEarly:false 
-        }
-        )
-        //if there is an error in the submitted data, return error message
-        if (result.error) {
-            res.status(400).send(result.error.details)
-        }
-        
+    try {    
         //check if user exists in DB
         const userData = await User.findOne({
             where: { username: req.body.username }
         });
-        //if found, return error
+        //if found, return error 409 - conflict
         if (userData) {
-            res.status(400).json({ message: 'Username already exists.  Please try logging in or select a new username.'})
+            res.status(409).json({ message: 'Username already exists.  Please try logging in or select a new username.'})
             return;
         }
         //otherwise create new user
