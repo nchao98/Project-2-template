@@ -10,16 +10,12 @@
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
                 {{#each categories.users as | user |}}
-                  {{!-- {{#if  }} --}}
-                    {{!-- {{#each users.Idea as | idea |}} --}}
-                      {{#if @first}}
+                  {{#if @first}}
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{@index}}" class="active" aria-current="true" aria-label="Slide {{@index}}"></button>
                     {{else}}
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{@index}}" aria-label="Slide {{index}}"></button>
-                      {{/if}}
-                    {{/each}}
-                  {{!-- {{/if}} --}}
-                {{!-- {{/with}} --}}
+                  {{/if}}
+                {{/each}}
               </div>
               
               <div class="carousel-inner">
