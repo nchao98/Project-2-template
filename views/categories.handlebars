@@ -48,7 +48,7 @@
                   Description
               </div>
               <div class="card-body" style="text-align: center;"> 
-                  {{{description}}}
+                  {{categories.description}}
               </div>
             </div>
             <!-- description end -->
@@ -79,14 +79,14 @@
                       </tfoot>
 
                       <tbody>
-                        {{!-- {{#each Ideas as |idea|}} --}}
+                          {{#each categories.users as | user |}}
                           <tr>
-                            <td>{{categories.users.[0].username}}</td>
-                            <td>{{categories.Ideas.[0].idea_name}}</td>
-                            <td>{{categories.Ideas.createdAt}}</td>
-                            <td><a href="{{categories.ideas.link_name}}">{{categories.ideas.link_name}}</a></td>                            
+                            <td>{{user.username}}</td>
+                            <td>{{user.Idea.idea_name}}</td>
+                            <td>{{user.Idea.createdAt}}</td>
+                            <td><a href="{{user.Idea.link_name}}">{{user.Idea.link_name}}</a></td>  
                           </tr>
-                          {{!-- {{/each}} --}}
+                          {{/each}}
                       </tbody>
 
                   </table>
