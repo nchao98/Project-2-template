@@ -36,7 +36,27 @@ router.get('/login', async(req, res) => {
 //profile route - user porfile
 router.get('/profile', withAuth, async(req, res) => {
     try {
+        //get user details
+        const userProfile = await User.findOne({
+            where: {username: req.session.username},
+            attributes: { exclude: ['password']},
+            include: [
+              {
+                model: Idea, 
+                include: [
+                    {model: Category
+                    }
+                ]
+              },
+            ],
+        });
+
+        const user = userProfile.get({ plain: true });
+          console.log(user);
+          console.log(user.Idea);
+        
         res.render('profile', {
+            user,
             logged_in: req.session.logged_in,
             username: req.session.username
         });
@@ -65,7 +85,8 @@ router.get('/categories/:id', async(req, res) => {
               {
                 model: Idea, 
                 include: [
-                    {model: User
+                    {model: User, 
+                        attributes: { exclude: ['password']},
                     }
                 ]
               },
