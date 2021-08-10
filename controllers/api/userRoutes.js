@@ -8,16 +8,16 @@ router.post('/login', async (req, res) => {
         const userData = await User.findOne({
             where: { email: req.body.email }
         });
-        //if not found send error
+        //if not found send error 409 - conflict
         if (!userData) {
-            res.status(400).json({ message: 'Incorrect username and/or password.  Please try again'});
+            res.status(409).json({ message: 'Incorrect username and/or password.  Please try again'});
             return;
         }
         //otherwise, check password
         const validPassword = await userData.checkPassword(req.body.password);
-        //if password not valid send error
+        //if password not valid send error - 409-conflict
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect username or password, please try again.' });
+            res.status(409).json({ message: 'Incorrect username or password, please try again.' });
             return;
         }
         //otherwise, save user details to session
