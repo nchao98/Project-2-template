@@ -68,22 +68,7 @@ router.post('/create', async (req, res) => {
 //creat idea route
 router.post('/createIdea', async (req, res) => {
     try {
-        //check if user exists in DB
-        // const ideaData = await Idea.findOne({
-        //     where: { idea_name: req.body.inputtedIdea }
-        // });
-        // console.log('#####################');
-        // console.log(req.session.user_id);
-
-        // //if found, return error
-        // if (ideaData) {
-        //     res.status(400).json({ message: 'Idea already exists.  Please try another'})
-        //     return;
-        // }
-        console.log('#####################');
-        console.log(req.session.user_id);
-
-        //otherwise create new user
+        //create new idea
         await Idea.create({
             idea_name: req.body.inputtedIdea,
             link_name: req.body.linkName,
