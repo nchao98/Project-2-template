@@ -12,7 +12,11 @@ const password = document.querySelector('#inputPassword').value.trim();
             headers: { 'Content-Type': 'application/json' },
         });
 
-        if (response.ok) {
+        if (response.status === 409) {
+            response.json().then(data => {
+                alert(data.message);
+            });   
+        } else if (response.ok) {
             document.location.replace('/');
         } else {
             document.location.replace('/404');
