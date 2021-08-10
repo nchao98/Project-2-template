@@ -1,0 +1,73 @@
+        <!-- main start  -->
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4" style="text-align: left;"></h1>   
+
+        <div class="card mb-4" style="width: 15rem;">
+        <div class="card-header" style="width: 15rem;">
+            <i class="me-1" ></i>
+             {{#if logged_in}}
+                {{username}}
+             {{else}}
+                Not logged in
+             {{/if}}
+        </div>
+        
+        <div class="card-body" style="text-align: center; width: 15rem; height: 15rem; background-image: url('https://i1.wp.com/acaweb.org/wp-content/uploads/2018/12/profile-placeholder.png?resize=240%2C250&ssl=1)">                
+
+    </div>
+</div>  
+                
+        <!-- description start -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-book-open me-1"></i>
+                About me
+            </div>
+            
+            <div class="card-body" style="text-align: left;"> 
+                About me Here
+            </div>
+        </div>
+        <!-- description end -->
+        
+        <!-- table start -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                My Idea's
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Content</th>
+                            <th>Created</th>
+                            <th>Link</th>                                 
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>User</th>
+                            <th>Content</th>
+                            <th>Created</th>
+                            <th>Link</th>    
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        {{#each categories.users as | user |}}
+                        <tr>
+                        <td>{{user.username}}</td>
+                        <td>{{user.Idea.idea_name}}</td>
+                        <td>{{format_date user.Idea.createdAt}}</td>
+                        <td><a href="{{user.Idea.link_name}}">{{user.Idea.link_name}}</a></td>  
+                        </tr>
+                        {{/each}}
+                    </tbody>
+
+                </table>
+            </div>
+    </div>
+</main>
