@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Idea } = require('../../models');
+const { User, Idea, Category } = require('../../models');
 
 //login route
 router.post('/login', async (req, res) => {
@@ -60,18 +60,18 @@ router.post('/create', async (req, res) => {
 //creat idea route
 router.post('/createIdea', async (req, res) => {
     try {
-        //check if user exists in DB
-        // const ideaData = await Idea.findOne({
-        //     where: { idea_name: req.body.inputtedIdea }
-        // });
-        // console.log('#####################');
-        // console.log(req.session.user_id);
+        // check if idea exists in DB
+        const ideaData = await Idea.findOne({
+            where: { idea_name: req.body.inputtedIdea }
+        });
+        console.log('#####################');
+        console.log(req.session.user_id);
 
-        // //if found, return error
-        // if (ideaData) {
-        //     res.status(400).json({ message: 'Idea already exists.  Please try another'})
-        //     return;
-        // }
+        //if found, return error
+        if (ideaData) {
+            res.status(400).json({ message: 'Idea already exists.  Please try another'})
+            return;
+        }
         console.log('#####################');
         console.log(req.session.user_id);
 
