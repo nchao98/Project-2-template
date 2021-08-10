@@ -34,9 +34,29 @@ router.get('/login', async(req, res) => {
 })
 
 //profile route - user porfile
-router.get('/profile', async(req, res) => {
+router.get('/profile', withAuth, async(req, res) => {
     try {
+        //get user details
+        const userProfile = await User.findOne({
+            where: {username: req.session.username},
+            attributes: { exclude: ['password']},
+            include: [
+              {
+                model: Idea, 
+                include: [
+                    {model: Category
+                    }
+                ]
+              },
+            ],
+        });
+
+        const user = userProfile.get({ plain: true });
+          console.log(user);
+          console.log(user.Idea);
+        
         res.render('profile', {
+            user,
             logged_in: req.session.logged_in,
             username: req.session.username
         });
@@ -63,12 +83,18 @@ router.get('/categories/:id', async(req, res) => {
         const categoryData = await Category.findByPk(req.params.id, {
             include: [
               {
-                model: User
+                model: Idea, 
+                include: [
+                    {model: User, 
+                        attributes: { exclude: ['password']},
+                    }
+                ]
               },
             ],
           });
           const categories = categoryData.get({ plain: true });
           console.log(categories);
+          console.log(categories.Idea);
           res.render('categories', {
             categories, 
             logged_in: req.session.logged_in, 

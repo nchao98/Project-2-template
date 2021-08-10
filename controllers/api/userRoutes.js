@@ -68,9 +68,6 @@ router.post('/create', async (req, res) => {
 //creat idea route
 router.post('/createIdea', async (req, res) => {
     try {
-<<<<<<< HEAD
-        //create new idea
-=======
         // check if idea exists in DB
         const ideaData = await Idea.findOne({
             where: { idea_name: req.body.inputtedIdea }
@@ -87,7 +84,6 @@ router.post('/createIdea', async (req, res) => {
         console.log(req.session.user_id);
 
         //otherwise create new user
->>>>>>> e66773bebda785e031ebf30d82326489235f7742
         await Idea.create({
             idea_name: req.body.inputtedIdea,
             link_name: req.body.linkName,

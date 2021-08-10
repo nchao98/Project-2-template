@@ -42,6 +42,7 @@
                     <thead>
                         <tr>
                             <th>User</th>
+                            <th>Category</th>
                             <th>Content</th>
                             <th>Created</th>
                             <th>Link</th>                                 
@@ -50,6 +51,7 @@
                     <tfoot>
                         <tr>
                             <th>User</th>
+                            <th>Category</th>
                             <th>Content</th>
                             <th>Created</th>
                             <th>Link</th>    
@@ -57,12 +59,13 @@
                     </tfoot>
 
                     <tbody>
-                        {{#each categories.users as | user |}}
+                        {{#each user.Ideas as | idea |}}
                         <tr>
-                        <td>{{user.username}}</td>
-                        <td>{{user.Idea.idea_name}}</td>
-                        <td>{{format_date user.Idea.createdAt}}</td>
-                        <td><a href="{{user.Idea.link_name}}">{{user.Idea.link_name}}</a></td>  
+                        <td>{{../username}}</td>
+                        <td>{{idea.Category.category_name}}</td>
+                        <td>{{idea.idea_name}}</td>
+                        <td>{{format_date idea.createdAt}}</td>
+                        <td><a href="{{idea.link_name}}">{{idea.link_name}}</a></td>  
                         </tr>
                         {{/each}}
                     </tbody>

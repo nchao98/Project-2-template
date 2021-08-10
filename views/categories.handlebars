@@ -9,7 +9,7 @@
             
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
-                {{#each categories.users as | user |}}
+                {{#each categories.Ideas as | idea |}}
                   {{#if @first}}
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{@index}}" class="active" aria-current="true" aria-label="Slide {{@index}}"></button>
                     {{else}}
@@ -19,46 +19,46 @@
               </div>
               
               <div class="carousel-inner">
-                {{#each categories.users as | user |}}
+                {{#each categories.Ideas as | idea |}}
                   {{#if @first }}
-                    {{#if (link_jpg user.Idea.link_name)}}
+                    {{#if (link_jpg idea.link_name)}}
                 <div class="carousel-item active" 
-                style="background-image: url('{{user.Idea.link_name}}')">
+                style="background-image: url('{{idea.link_name}}')">
                 </div>
                     {{/if}}
-                    {{#if (link_youtube user.Idea.link_name)}}
+                    {{#if (link_youtube idea.link_name)}}
                 <div class="carousel-item active">
                   <iframe 
-                  src="{{user.Idea.link_name}}" width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                  src="{{idea.link_name}}" width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                   </iframe>
                 </div>
                     {{/if}}
-                    {{#if (link_giphy user.Idea.link_name)}}
+                    {{#if (link_giphy idea.link_name)}}
                 <div class="carousel-item active">                 
                   <iframe 
-                  src="{{user.Idea.link_name}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
+                  src="{{idea.link_name}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
                   </iframe>                 
                 </div>
                     {{/if}}
 
                   {{else}}
 
-                    {{#if (link_jpg user.Idea.link_name)}}
+                    {{#if (link_jpg idea.link_name)}}
                 <div class="carousel-item" 
-                style="background-image: url('{{user.Idea.link_name}}')">
+                style="background-image: url('{{idea.link_name}}')">
                 </div>
                     {{/if}}
-                    {{#if (link_youtube user.Idea.link_name)}}
+                    {{#if (link_youtube idea.link_name)}}
                 <div class="carousel-item">
                   <iframe 
-                  src="{{user.Idea.link_name}}" width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                  src="{{idea.link_name}}" width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                   </iframe>
                 </div>
                     {{/if}}
-                    {{#if (link_giphy user.Idea.link_name)}}
+                    {{#if (link_giphy idea.link_name)}}
                 <div class="carousel-item">                 
                   <iframe 
-                  src="{{user.Idea.link_name}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
+                  src="{{idea.link_name}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
                   </iframe>                 
                 </div>
                     {{/if}}
@@ -116,12 +116,12 @@
                       </tfoot>
 
                       <tbody>
-                          {{#each categories.users as | user |}}
+                          {{#each categories.Ideas as | idea |}}
                           <tr>
-                            <td>{{user.username}}</td>
-                            <td>{{user.Idea.idea_name}}</td>
-                            <td>{{format_date user.Idea.createdAt}}</td>
-                            <td><a href="{{user.Idea.link_name}}">{{user.Idea.link_name}}</a></td>  
+                            <td>{{idea.user.username}}</td>
+                            <td>{{idea.idea_name}}</td>
+                            <td>{{format_date idea.createdAt}}</td>
+                            <td><a href="{{idea.link_name}}">{{idea.link_name}}</a></td>  
                           </tr>
                           {{/each}}
                       </tbody>

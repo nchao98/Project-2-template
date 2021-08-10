@@ -18,7 +18,7 @@ if (inputtedIdea && linkName && description && categoryChoice) {
         });
         
         if (response.ok) {
-        // document.location.replace('/profile');
+            document.location.replace('/profile');
             alert('Success!')
         } 
         else 
