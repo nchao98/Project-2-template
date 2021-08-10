@@ -34,7 +34,7 @@ router.get('/login', async(req, res) => {
 })
 
 //profile route - user porfile
-router.get('/profile', async(req, res) => {
+router.get('/profile', withAuth, async(req, res) => {
     try {
         res.render('profile', {
             logged_in: req.session.logged_in,
@@ -63,12 +63,17 @@ router.get('/categories/:id', async(req, res) => {
         const categoryData = await Category.findByPk(req.params.id, {
             include: [
               {
-                model: User
+                model: Idea, 
+                include: [
+                    {model: User
+                    }
+                ]
               },
             ],
           });
           const categories = categoryData.get({ plain: true });
           console.log(categories);
+          console.log(categories.Idea);
           res.render('categories', {
             categories, 
             logged_in: req.session.logged_in, 
