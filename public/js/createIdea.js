@@ -18,7 +18,7 @@ if (inputtedIdea && linkName && description && categoryChoice) {
         });
         
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace(`/categories/${categoryChoice}`);
             alert('Success!')
         } 
         else 

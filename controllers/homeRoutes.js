@@ -114,7 +114,7 @@ router.get('/idea/:id', async(req, res) => {
            
         const ideas = ideaData.get({plain: true});
 
-        res.render('ideas', {
+        res.render('idea', {
             ideas,
             logged_in: req.session.logged_in,
             username: req.session.username

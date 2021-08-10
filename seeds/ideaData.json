@@ -1,5 +1,12 @@
 [
     {
+        "idea_name": "Cute Dog",
+        "link_name": "https://i.pinimg.com/736x/f3/89/ef/f389efb2a57669d9b50b97659507a2fe.jpg",
+        "description": "Dog is Cute",
+        "category_id": 10,
+        "user_id": 7
+    },
+    {
         "idea_name": "Void the Election!",
         "link_name": "https://www.nydailynews.com/resizer/j31QcOwNT0qy11cXYKnk50pdHcc=/1200x0/center/top/cloudfront-us-east-1.images.arcpublishing.com/tronc/BBVCPNCETVFG3NJICBOD3GTBZQ.jpg",
         "description": "A lot of people are saying that Joe cheated!",
