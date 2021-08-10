@@ -33,6 +33,18 @@ router.get('/login', async(req, res) => {
     }
 })
 
+//profile route - user porfile
+router.get('/profile', async(req, res) => {
+    try {
+        res.render('profile', {
+            logged_in: req.session.logged_in,
+            username: req.session.username
+        });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
+
 //register route - return register page
 router.get('/register', async(req, res) => {
     try {
