@@ -37,13 +37,21 @@ router.post('/login', async (req, res) => {
 router.post('/create', async (req, res) => {
     try {    
         //check if user exists in DB
-        const userData = await User.findOne({
+        const userNameData = await User.findOne({
             where: { username: req.body.username }
         });
         //if found, return error 409 - conflict
-        if (userData) {
+        if (userNameData) {
             res.status(409).json({ message: 'Username already exists.  Please try logging in or select a new username.'})
             return;
+        }
+        //check if email exists in DB
+        const emailData = await User.findOne({
+            where: { email: req.body.email}
+        });
+        //if found, return error 409 - conflict
+        if(emailData) {
+            res.status(409).json({ message: 'Email aldready exists. Please try logging in or select a new email address.'})
         }
         //otherwise create new user
         await User.create({
