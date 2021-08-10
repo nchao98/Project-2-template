@@ -33,6 +33,13 @@
         "description": "All I got is a $1(92.6 billion) dollar(s) and a dream...",
         "category_id": 8,
         "user_id": 3
+    },
+    {
+        "idea_name": "Simone Biles is also a GOAT",
+        "link_name": "https://www.youtube.com/embed/K4b9KsrXAD8",
+        "description": "overcoming twisties for bronze medal",
+        "category_id": 9,
+        "user_id": 5
     }
     
 ]
