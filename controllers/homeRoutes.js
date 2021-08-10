@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth.js');
 const { User, Idea, Category } = require('../models');
 
 //homepage route - return ideas for carosel
@@ -105,7 +106,7 @@ router.get('/logout', async(req, res) => {
 })
 
 //create Idea route
-router.get('/createIdea', async(req, res) => {
+router.get('/createIdea', withAuth, async(req, res) => {
     try {
         res.render('createIdea', {
             logged_in: req.session.logged_in,

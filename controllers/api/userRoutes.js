@@ -8,16 +8,16 @@ router.post('/login', async (req, res) => {
         const userData = await User.findOne({
             where: { email: req.body.email }
         });
-        //if not found send error
+        //if not found send error 409 - conflict
         if (!userData) {
-            res.status(400).json({ message: 'Incorrect username and/or password.  Please try again'});
+            res.status(409).json({ message: 'Incorrect username and/or password.  Please try again'});
             return;
         }
         //otherwise, check password
         const validPassword = await userData.checkPassword(req.body.password);
-        //if password not valid send error
+        //if password not valid send error - 409-conflict
         if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect username or password, please try again.' });
+            res.status(409).json({ message: 'Incorrect username or password, please try again.' });
             return;
         }
         //otherwise, save user details to session
@@ -37,13 +37,21 @@ router.post('/login', async (req, res) => {
 router.post('/create', async (req, res) => {
     try {    
         //check if user exists in DB
-        const userData = await User.findOne({
+        const userNameData = await User.findOne({
             where: { username: req.body.username }
         });
         //if found, return error 409 - conflict
-        if (userData) {
+        if (userNameData) {
             res.status(409).json({ message: 'Username already exists.  Please try logging in or select a new username.'})
             return;
+        }
+        //check if email exists in DB
+        const emailData = await User.findOne({
+            where: { email: req.body.email}
+        });
+        //if found, return error 409 - conflict
+        if(emailData) {
+            res.status(409).json({ message: 'Email aldready exists. Please try logging in or select a new email address.'})
         }
         //otherwise create new user
         await User.create({
@@ -60,6 +68,9 @@ router.post('/create', async (req, res) => {
 //creat idea route
 router.post('/createIdea', async (req, res) => {
     try {
+<<<<<<< HEAD
+        //create new idea
+=======
         // check if idea exists in DB
         const ideaData = await Idea.findOne({
             where: { idea_name: req.body.inputtedIdea }
@@ -76,6 +87,7 @@ router.post('/createIdea', async (req, res) => {
         console.log(req.session.user_id);
 
         //otherwise create new user
+>>>>>>> e66773bebda785e031ebf30d82326489235f7742
         await Idea.create({
             idea_name: req.body.inputtedIdea,
             link_name: req.body.linkName,

@@ -32,23 +32,17 @@ if (!username) {
         body: JSON.stringify({username, email, password}),
         headers: { 'Content-Type': 'application/json' },
         });
-        if (response.status === 422) {
-            response.json().then(data => {
-                alert(data.error.details[0].message)
-            });
-        };
         if (response.status === 409) {
             response.json().then(data => {
                 alert(data.message);
             });
-        };
-        if (response.ok) {
+        } else if (response.ok) {
             document.location.replace('/login');
             response.json().then(data => {
                 alert(data.message);
             });
         } else {
-            alert(response.statusText);
+            alert('test');
         };
     } else {
     alert('Passwords do not match.  Please try again.');
