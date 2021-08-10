@@ -1,0 +1,33 @@
+<main>
+    <div class = "container-fluid px-4">
+        <h1 class="mt-4" style="text-align: center;">{{ideas.idea_name}}</h1>
+                    {{#if (link_jpg ideas.link_name)}}
+                <div class="media-wrapper"
+                style="background-image: url('{{ideas.link_name}}');background-size:contain; background-repeat:no-repeat">
+                </div>
+                    {{/if}}
+                    {{#if (link_youtube ideas.link_name)}}
+                <div class="media-wrapper">
+                  <iframe
+                  src="{{ideas.link_name}}" width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                  </iframe>
+                </div>
+                    {{/if}}
+                    {{#if (link_giphy ideas.link_name)}}
+                <div class="media-wrapper">
+                  <iframe
+                  src="{{ideas.link_name}}" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen>
+                  </iframe>
+                  </div>
+                  {{/if}}
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-book-open me-1"></i>
+            Description
+        </div>
+        <div class="card-body" style="text-align: center;">
+           <p> {{ideas.description}} </p>
+        </div>
+    </div>
+</main>

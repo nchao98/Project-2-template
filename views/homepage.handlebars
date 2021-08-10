@@ -23,7 +23,7 @@
                   {{#if @first }}
                     {{#if (link_jpg idea.link_name)}}
                 <div class="carousel-item active" 
-                style="background-image: url('{{idea.link_name}}')">
+                style="background-image: url('{{idea.link_name}}'); background-size: contain">
                 </div>
                     {{/if}}
                     {{#if (link_youtube idea.link_name)}}
@@ -45,7 +45,7 @@
 
                     {{#if (link_jpg idea.link_name)}}
                 <div class="carousel-item" 
-                style="background-image: url('{{idea.link_name}}')">
+                style="background-image: url('{{idea.link_name}}'); background-size: contain">
                 </div>
                     {{/if}}
                     {{#if (link_youtube idea.link_name)}}

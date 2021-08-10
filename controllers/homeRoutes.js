@@ -105,8 +105,25 @@ router.get('/categories/:id', async(req, res) => {
         res.status(400).json(err);
     }
 
-})
+});
 
+//routes to view ideas
+router.get('/idea/:id', async(req, res) => {
+    try {
+        const ideaData = await Idea.findByPk(req.params.id);
+           
+        const ideas = ideaData.get({plain: true});
+
+        res.render('ideas', {
+            ideas,
+            logged_in: req.session.logged_in,
+            username: req.session.username
+            
+        });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+})
 //recover password route - return password page
 router.get('/password',async(req, res) => {
     try {
