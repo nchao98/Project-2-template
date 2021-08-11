@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nchao98/ShareSpace.git"
+    "url": "git+https://github.com/Errollinsjr/ShareSpaceProjectTwo"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nchao98/ShareSpace/issues"
+    "url": "https://github.com/Errollinsjr/ShareSpaceProjectTwo/issues"
   },
-  "homepage": "https://github.com/nchao98/ShareSpace#readme",
+  "homepage": "https://github.com/Errollinsjr/ShareSpaceProjectTwo#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.0.2",
